@@ -1,36 +1,36 @@
-模块介绍
-规划项目
-设置主页
-添加虚拟数据和静态文件
-添加常规 React 组件
-添加更多 React 组件和连接组件
-在 Next.js 项目中设置组件样式0
-添加按钮和图标
-添加 _事件详细信息_ 页面（动态路由）
-添加通用布局包装器组件
-处理 _所有事件_ 页面
-添加用于过滤事件的过滤表单
-以编程方式导航到 _已过滤事件_ 页面
-在 Catch-All 页面上提取数据
-最后步骤
-模块摘要
+- 模块介绍
+- 规划项目
+- 设置主页
+- 添加虚拟数据和静态文件
+- 加常规 React 组件
+- 添加更多 React 组件和连接组件
+- 在 Next.js 项目中设置组件样式0
+- 添加按钮和图标
+- 添加 _事件详细信息_ 页面（动态路由）
+- 添加通用布局包装器组件
+- 处理 _所有事件_ 页面
+- 添加用于过滤事件的过滤表单
+- 以编程方式导航到 _已过滤事件_ 页面
+- 在 Catch-All 页面上提取数据
+- 最后步骤
+- 模块摘要
 
- Module Introduction
- Planning The Project
- Setting Up The Main Pages
- Adding Dummy Data & Static Files
- Adding Regular React Components
- Adding More React Components & Connecting Components
- Styling Components In Next.js Projects0
- Adding Buttons & Icons
- Adding the _Event Detail_ Page (Dynamic Route)
- Adding a General Layout Wrapper Component
- Working on the _All Events_ Page
- Adding a Filter Form for Filtering Events
- Navigating to the _Filtered Events_ Page Progammatically
- Extracting Data on the Catch-All Page
- Final Steps
- Module Summary
+- Module Introduction
+- Planning The Project
+- Setting Up The Main Pages
+- Adding Dummy Data & Static Files
+- Adding Regular React Components
+- Adding More React Components & Connecting Components
+- Styling Components In Next.js Projects0
+- Adding Buttons & Icons
+- Adding the _Event Detail_ Page (Dynamic Route)
+- Adding a General Layout Wrapper Component
+- Working on the _All Events_ Page
+- Adding a Filter Form for Filtering Events
+- Navigating to the _Filtered Events_ Page Progammatically
+- Extracting Data on the Catch-All Page
+- Final Steps
+- Module Summary
 
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
