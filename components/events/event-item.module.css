@@ -1,0 +1,51 @@
+.item {
+    width: 40%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.202);
+}
+
+.image {
+    width: 250px;
+    height: 250px;
+    background-color: gray;
+    border-radius: 10px 0 0 10px;
+    object-fit: cover; /* 确保图片填充容器 */
+    object-position: center; /* 图片居中显示 */
+}
+
+
+.content {
+    margin: 20px;
+}
+
+.summary {
+    color: gray;
+}
+.summary h2{
+    margin: 10px;
+    color: black;
+}
+.location {
+    display: flex;
+    flex-direction: row;
+}
+
+.location b{
+    margin: 10px 0px;
+}
+
+.date {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+}
+.date b{
+    margin: 10px 0px;
+}
+
+.actions {
+    margin: 20px 0px;
+}

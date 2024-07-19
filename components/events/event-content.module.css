@@ -1,0 +1,9 @@
+.content {
+    width: 50%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    /* border-radius: 10px;
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.202); */
+}

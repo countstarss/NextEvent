@@ -1,0 +1,6 @@
+.icon {
+    width: 20px;  /* 设置图标宽度 */
+    height: 20px; /* 设置图标高度 */    
+    align-items: flex-end;
+    margin: 10px;
+}

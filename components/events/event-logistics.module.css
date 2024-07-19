@@ -1,0 +1,21 @@
+.logistics {
+    width: 60%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: baseline; */
+    color: #94fdfd;
+}
+
+.image {
+    width: 300px;
+    height: 300px;
+}
+
+
+
+.info {
+    font-size: 20px;
+    width: 50%;
+    margin: 50px;
+}
