@@ -10,8 +10,6 @@ export async function getAllEvents() {
             ...data[key]
         });
     }
-    // console.log(events);
-
     return events;
 }
 
