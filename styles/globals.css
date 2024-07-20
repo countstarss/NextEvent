@@ -33,6 +33,11 @@ body {
   margin-left: 31.5%;
 }
 
+.center {
+  font-family:'Courier New', Courier, monospace;
+  font-size: 55px;
+  text-align: center;
+}
 .errorInfo {
   width: 100%;
   height: 200px;
@@ -50,4 +55,9 @@ body {
   color: rgb(96, 40, 99);
   background-color: rgb(217, 183, 250);
   border-radius: 10px;
+}
+
+.eventDetail{
+  position: relative;
+  top: -220px;
 }

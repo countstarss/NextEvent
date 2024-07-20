@@ -1,0 +1,12 @@
+.eventTitle {
+    width: 100%;
+    /* height: 200px; */
+    padding: 10px 0px 120px;
+    background-color: #03be9f;
+}
+
+.center {
+    font-family:'Courier New', Courier, monospace;
+    font-size: 55px;
+    text-align: center;
+}
