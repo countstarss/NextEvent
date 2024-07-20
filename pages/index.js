@@ -13,7 +13,7 @@ function HomePage(props) {
     return <div className="home">
         <Head>
             <title>NextJS Event</title>
-            <mate 
+            <meta 
                 name="name" 
                 content='find a lot of events that allow you to evolve' 
             />

@@ -7,6 +7,7 @@ import ResultTitle from "@/components/events/result-title";
 import Button from "@/components/UserInterface/button";
 import useSWR from "swr";
 import { useEffect,useState } from "react";
+import Head from "next/head";
 
 
 const FilteredEventPage = (props) => {
@@ -109,6 +110,13 @@ const FilteredEventPage = (props) => {
 
   return (
     <div>
+      <Head>
+          <title>Filtered Events</title>
+          <meta
+            name="description"
+            content={`All events for ${numMonth}/${numYear}`}
+          />
+      </Head>
       <ResultTitle date={date} />
       <EventList Events={filteredEvents} />
     </div>

@@ -1,4 +1,5 @@
 // Event detail page
+import Head from "next/head";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { getEventById,getAllEvents } from "@/helper/api-util";
@@ -20,6 +21,13 @@ const EventDetailPage = (props) => {
   }
 
   return <>
+        <Head>
+          <title>{event.title}</title>
+          <mate 
+            name="description"
+            content="find a lot of events that allow you to evolve"
+          />
+        </Head>
       <EventTitle event={event}/>
       <div className="eventDetail">
         <EventLogistics 
