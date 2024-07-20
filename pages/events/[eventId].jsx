@@ -23,7 +23,7 @@ const EventDetailPage = (props) => {
   return <>
         <Head>
           <title>{event.title}</title>
-          <mate 
+          <meta
             name="description"
             content="find a lot of events that allow you to evolve"
           />

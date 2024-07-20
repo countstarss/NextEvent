@@ -55,6 +55,15 @@ const FilteredEventPage = (props) => {
     return eventDate.getFullYear() === numYear && eventDate.getMonth() === numMonth - 1;
   });
 
+  let pageHeadData = (
+    <Head>
+          <title>Filtered Events</title>
+          <meta
+            name="description"
+            content={`A list of events`}
+          />
+    </Head>
+  ) 
 
   if (isNaN(numYear) ||
      isNaN(numMonth) || 
@@ -66,6 +75,7 @@ const FilteredEventPage = (props) => {
     ) {
         return(
           <div className="errorInfo">
+            {pageHeadData}
             <h3>Invaild filter,please adjust your values</h3>
             <Button link='/events'>Back to AllEvents</Button>
           </div>
@@ -83,10 +93,22 @@ const FilteredEventPage = (props) => {
 
   if (!filteredEvents || filteredEvents.length === 0) {
     return <div className="errorInfo">
+      {pageHeadData}
       <h3>No Events found for the chosen filter!</h3>
       <Button link='/events'>Back to AllEvents</Button>
     </div>
   }
+
+    // 更新后的pageHeadData
+    pageHeadData = (
+      <Head>
+            <title>Filtered Events</title>
+            <meta
+              name="description"
+              content={`All events for ${numMonth}/${numYear}`}
+            />
+      </Head>
+    )
 
   // ======== getServerSideProps========
   
@@ -110,13 +132,7 @@ const FilteredEventPage = (props) => {
 
   return (
     <div>
-      <Head>
-          <title>Filtered Events</title>
-          <meta
-            name="description"
-            content={`All events for ${numMonth}/${numYear}`}
-          />
-      </Head>
+      { pageHeadData }
       <ResultTitle date={date} />
       <EventList Events={filteredEvents} />
     </div>
