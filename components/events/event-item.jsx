@@ -1,5 +1,6 @@
 import classes from './event-item.module.css'
 import Button from "../UserInterface/button";
+import Image from 'next/image';
 
 // MARK: - import icon
 import DateIcon from "../icons/date-icon";
@@ -12,7 +13,8 @@ const EventItem = ({ event }) => {
     const exploreLink = `/events/${id}`
 
     return <li  className={classes.item}>
-        <img src={image} alt="image" className={ classes.image }/>
+        <Image src={image} alt="image" className={ classes.image } width={300} height={300}/>
+        {/* <img src={image} alt="image" className={ classes.image }/> */}
         <div className={classes.content}>
             <div className={classes.summary}>
                 <h2>{title}</h2>
