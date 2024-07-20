@@ -10,7 +10,7 @@ import { useEffect,useState } from "react";
 import Head from "next/head";
 
 
-const FilteredEventPage = (props) => {
+const FilteredEventPage = () => {
 
   const [loadedEvents,setLoadedEvents] = useState();
   /*
@@ -19,6 +19,13 @@ const FilteredEventPage = (props) => {
   */
   const router = useRouter();
   const filterData = router.query.slug;
+
+  if(!filterData) {
+    return<div className="errorInfo">
+          <h3>Invaild filter,please adjust your values</h3>
+          <Button link='/events'>Back to AllEvents</Button>
+        </div>
+  }
 
   const filteredYear = filterData[0];
   const filteredMonth = filterData[1];

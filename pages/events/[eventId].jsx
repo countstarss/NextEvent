@@ -14,9 +14,7 @@ const EventDetailPage = (props) => {
   // console.log(router.query);
   // const eventId = router.query.eventId;
   if(!event) {
-    useEffect(() => {
       router.push('/404');
-    }, []);
     return null; 
   }
 
