@@ -37,7 +37,7 @@ function Comments(props) {
     // });
     fetch("/api/comments/" + eventId, {
       method: "POST",
-      body: JSON.stringify(commentData),
+      body: JSON.stringify(commentData), //commentData 从newComment中取出
       headers: {
         "Content-Type": "application/json",
       },
@@ -46,7 +46,7 @@ function Comments(props) {
         if (res.ok) {
           return res.json();
         }
-
+        // 如果没有取回response数据
         return res.json().then((data) => {
           throw new Error(data.message || "Something went wrong!");
         });

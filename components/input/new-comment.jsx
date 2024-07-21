@@ -27,7 +27,7 @@ function NewComment(props) {
       setIsInvalid(true);
       return;
     }
-
+    // 在点击，将在这里处理完成的数据传回到comments.jsx 进行POST请求
     props.onAddComment({
       email: enteredEmail,
       name: enteredName,
