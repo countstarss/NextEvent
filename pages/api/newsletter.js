@@ -1,4 +1,7 @@
-function handler(req, res) {
+const { MongoClient } = require('mongodb');
+
+
+async function handler(req, res) {
     if(req.method === 'POST') {
         //POST
         const userEmail = req.body.email;
@@ -7,6 +10,39 @@ function handler(req, res) {
             return;
         }
         
+        // const mongodbUrl = 'mongodb+srv://luke:<password>@cluster0.5gvy97r.mongodb.net/newsletter'
+        // const client = new MongoClient(mongodbUrl)
+        // await client.connect()
+
+        ////
+
+        // const client = await MongoClient.connect('mongodb+srv://luke:5Z1I9q40ZBXEkhUX@cluster0.5gvy97r.mongodb.net/newsletter')
+        // const db = client.db()
+
+        // await db.collection('emails').insertOne({ email:userEmail })
+        
+        // client.close();
+
+        const mongodbUrl = 'mongodb+srv://luke:5Z1I9q40ZBXEkhUX@cluster0.5gvy97r.mongodb.net/newsletter';
+
+        let client;
+
+        try {
+            client = await MongoClient.connect(mongodbUrl);
+
+            const db = client.db();
+
+            await db.collection('emails').insertOne({ email: userEmail });
+
+            res.status(201).json({ message: 'Signed Up!' });
+        } catch (error) {
+            res.status(500).json({ message: 'Could not connect to database.' });
+        } finally {
+            if (client) {
+                client.close();
+            }
+        }
+
         console.log(userEmail);
         res.status(201).json({ message: 'Signed Up!' });
 
