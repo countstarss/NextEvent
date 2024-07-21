@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
 import classes from "./comments.module.css";
-// import NotificationContext from "../../store/NotificationContext";
+import NotificationContext from "../../store/NotificationContext";
 
 function Comments(props) {
   const { eventId } = props;
@@ -11,7 +11,7 @@ function Comments(props) {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-//   const { showNotification } = useContext(NotificationContext);
+  const { showNotification } = useContext(NotificationContext);
 
   useEffect(() => {
     if (showComments) {
@@ -30,11 +30,11 @@ function Comments(props) {
   }
 
   function addCommentHandler(commentData) {
-    // showNotification({
-    //   title: "Sending comment...",
-    //   message: "Your comment is currently being stored into a database.",
-    //   status: "pending",
-    // });
+    showNotification({
+      title: "Sending comment...",
+      message: "Your comment is currently being stored into a database.",
+      status: "pending",
+    });
     fetch("/api/comments/" + eventId, {
       method: "POST",
       body: JSON.stringify(commentData), //commentData 从newComment中取出
@@ -51,20 +51,20 @@ function Comments(props) {
           throw new Error(data.message || "Something went wrong!");
         });
       })
-      // .then(() =>
-      //   showNotification({
-      //     title: "Success!",
-      //     message: "Your comment was saved",
-      //     status: "success",
-      //   })
-      // )
+      .then(() =>
+        showNotification({
+          title: "Success!",
+          message: "Your comment was saved",
+          status: "success",
+        })
+      )
       .catch((err) =>
-        // showNotification({
-        //   title: "Error!",
-        //   message: err.message || "Something went wrong!",
-        //   status: "error",
-        // })
-        console.log(`err:${err}`)
+        showNotification({
+          title: "Error!",
+          message: err.message || "Something went wrong!",
+          status: "error",
+        })
+        // console.log(`err:${err}`)
       )
       
   }

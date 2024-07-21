@@ -10,20 +10,9 @@ async function handler(req, res) {
             return;
         }
         
-        // const mongodbUrl = 'mongodb+srv://luke:<password>@cluster0.5gvy97r.mongodb.net/newsletter'
-        // const client = new MongoClient(mongodbUrl)
-        // await client.connect()
 
-        ////
-
-        // const client = await MongoClient.connect('mongodb+srv://luke:5Z1I9q40ZBXEkhUX@cluster0.5gvy97r.mongodb.net/newsletter')
-        // const db = client.db()
-
-        // await db.collection('emails').insertOne({ email:userEmail })
-        
-        // client.close();
-
-        const mongodbUrl = 'mongodb+srv://luke:5Z1I9q40ZBXEkhUX@cluster0.5gvy97r.mongodb.net/newsletter';
+        // const mongodbUrl = 'mongodb+srv://luke:5Z1I9q40ZBXEkhUX@cluster0.5gvy97r.mongodb.net/newsletter';
+        const mongodbUrl = process.env.MONGODB_URI;
 
         let client;
 

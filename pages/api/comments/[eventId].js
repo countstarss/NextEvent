@@ -1,4 +1,6 @@
-function handler(req, res) {
+import { MongoClient } from "mongodb";
+
+async function handler(req, res) {
     const eventId = req.query.eventId;
     if(req.method === 'POST') {
         //POST
@@ -10,42 +12,61 @@ function handler(req, res) {
         }
 
         const newComment = {
-            id: new Date().toISOString(),
             email,
             name,
-            text
+            text,
+            eventId
         };
 
         console.log(newComment);
         res.status(201).json({ message: 'Added comment',comment:newComment })
 
+
+        const mongodbUrl = process.env.MONGODB_URI;
+        let client;
+        try {
+            client = await MongoClient.connect(mongodbUrl)
+
+            const db = client.db()
+
+            const result = await db.collection('comment').insertOne(newComment)
+
+            newComment.id = result.insertedId;
+
+            res.status(201).json({ message:'Added new comment' })
+        }catch(error) {
+            res.status(500).json({ message: 'Could not connect to database.' });
+        }finally {
+            if(client){
+                client.close()
+            }
+        }
+
     }
     
     if(req.method === 'GET'){
         //GET
-        const comments=[
-            {
-                id:'1',
-                name:'luke',
-                email:'countstarss404@gamil.com',
-                text:'hey,luke,nice to meet you!'
-            },
-            {
-                id:'2',
-                name:'jonas',
-                email:'jonas@gamil.com',
-                text:'hey,jonas,nice to meet you!'
-            },
-            {
-                id:'3',
-                name:'max',
-                email:'max@gamil.com',
-                text:'hey,max,nice to meet you!'
-            },
-        ];
+        const mongodbUrl = process.env.MONGODB_URI;
+        let client;
+        try {
+            client = await MongoClient.connect(mongodbUrl)
+            const db = client.db()
 
-        res.status(200).json({ comments: comments})
+            const document = await db
+                .collection('comment')
+                .find()
+                .sort({ _id: -1 })
+                .toArray();
 
+            console.log(document);
+            res.status(200).json({ comments: document})
+        }catch(error) {
+            res.status(500).json({ message: 'Could not connect to database.' });
+        }finally {
+            if(client){
+                client.close()
+            }
+        }
     }
 }
 
