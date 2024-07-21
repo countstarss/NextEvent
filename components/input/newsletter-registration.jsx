@@ -1,14 +1,15 @@
 import React, { useContext, useRef } from "react";
 import classes from "./newsletter-registration.module.css"
-// import NotificationContext from "../../store/NotificationContext";
+import NotificationContext from "../../store/NotificationContext";
 
 function NewsletterRegistration() {
   const emailRef = useRef();
-//   const { showNotification } = useContext(NotificationContext);
+  const { showNotification } = useContext(NotificationContext);
+
   function registrationHandler(event) {
     event.preventDefault();
 
-    const email = emailRef.current.value;
+    const enteredEmail = emailRef.current.value;
 
     showNotification({
       title: "Signing up...",
@@ -18,18 +19,21 @@ function NewsletterRegistration() {
 
     fetch("/api/newsletter", {
       method: "POST",
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email:enteredEmail }),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => {
+    // .then(res => res.json())
+    // .then(data => console.log(data))
+    
+    .then((res) => {
         if (res.ok) {
-          return res.json();
+          console.log(enteredEmail);
         }
-
         return res.json().then((data) => {
-          throw new Error(data.message || "Something went wrong!");
+          // throw new Error(data.message || "Something went wrong!");
+          console.log(data);
         });
       })
       .then(() => {
@@ -45,7 +49,7 @@ function NewsletterRegistration() {
           message: err.message || "Something went wrong!",
           status: "error",
         })
-      );
+      )
   }
 
   return (

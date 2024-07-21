@@ -20,13 +20,13 @@ const EventDetailPage = (props) => {
   }
 
   return <>
-        <Head>
-          <title>{event.title}</title>
-          <meta
-            name="description"
-            content="find a lot of events that allow you to evolve"
-          />
-        </Head>
+      <Head>
+        <title>{event.title}</title>
+        <meta
+          name="description"
+          content="find a lot of events that allow you to evolve"
+        />
+      </Head>
       <EventTitle event={event}/>
       <div className="eventDetail">
         <EventLogistics 

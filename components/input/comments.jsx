@@ -30,11 +30,11 @@ function Comments(props) {
   }
 
   function addCommentHandler(commentData) {
-    showNotification({
-      title: "Sending comment...",
-      message: "Your comment is currently being stored into a database.",
-      status: "pending",
-    });
+    // showNotification({
+    //   title: "Sending comment...",
+    //   message: "Your comment is currently being stored into a database.",
+    //   status: "pending",
+    // });
     fetch("/api/comments/" + eventId, {
       method: "POST",
       body: JSON.stringify(commentData),
@@ -51,20 +51,22 @@ function Comments(props) {
           throw new Error(data.message || "Something went wrong!");
         });
       })
-      .then(() =>
-        showNotification({
-          title: "Success!",
-          message: "Your comment was saved",
-          status: "success",
-        })
-      )
+      // .then(() =>
+      //   showNotification({
+      //     title: "Success!",
+      //     message: "Your comment was saved",
+      //     status: "success",
+      //   })
+      // )
       .catch((err) =>
-        showNotification({
-          title: "Error!",
-          message: err.message || "Something went wrong!",
-          status: "error",
-        })
-      );
+        // showNotification({
+        //   title: "Error!",
+        //   message: err.message || "Something went wrong!",
+        //   status: "error",
+        // })
+        console.log(`err:${err}`)
+      )
+      
   }
 
   return (
