@@ -6,6 +6,7 @@ import { getEventById,getAllEvents } from "@/helper/api-util";
 import EventContent from "@/components/events/event-content";
 import EventLogistics from "@/components/events/event-logistics";
 import EventTitle from "@/components/events/event-title";
+import Comments from "@/components/input/comments";
 
 const EventDetailPage = (props) => {
   const router = useRouter();
@@ -37,6 +38,7 @@ const EventDetailPage = (props) => {
         <EventContent >
           <h3>{event.description}</h3>
         </EventContent>
+        <Comments eventId={event.id} />
       </div>
   </>
 }
