@@ -19,9 +19,9 @@ function HomePage(props) {
                 content='find a lot of events that allow you to evolve' 
             />
         </Head>
-        <NewsletterRegistration />
         <h1 className="title">Events</h1>
         <EventList Events={featuredEvents} />
+        <NewsletterRegistration />
     </div>
 }
 

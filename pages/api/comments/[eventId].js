@@ -21,7 +21,6 @@ async function handler(req, res) {
         };
 
         console.log(`[eventId]:23 -> newComment:${newComment}`);
-        res.status(201).json({ message: 'Added comment',comment:newComment })
 
         let client;
         try {
@@ -35,7 +34,7 @@ async function handler(req, res) {
 
             newComment.id = result.insertedId;
 
-            res.status(201).json({ message:'Added new comment' })
+            res.status(201).json({ message:'Added new comment',comment:newComment })
         }catch(error) {
             res.status(500).json({ message: 'Failed to insert data' });
         }finally {
@@ -54,17 +53,22 @@ async function handler(req, res) {
             client = await MongoClient.connect(mongodbUrl)
             const db = client.db()
 
+            // const document = await db
+            //     .collection('comment')
+            //     .find()
+            //     .sort({ _id: -1 })
+            //     .toArray();
             const document = await db
                 .collection('comment')
-                .find()
+                .find({ eventId: eventId })
                 .sort({ _id: -1 })
                 .toArray();
 
-            console.log(document);
+            console.log(document[0]);
             console.log(`[eventId]:90 -> document:${document}`);
-            res.status(200).json({ comments: document})
+            res.status(200).json({ message:`success get ${document.length} comments`,comments: document})
         }catch(error) {
-            res.status(500).json({ message: 'Could not connect to database.' });
+            res.status(500).json({ message: 'Getting comments failed' });
         }finally {
             if(client){
                 client.close()
