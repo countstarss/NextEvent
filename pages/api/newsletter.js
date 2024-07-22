@@ -1,5 +1,5 @@
 const { MongoClient } = require('mongodb');
-
+import { connectDatabase,insertDocument } from "@/helper/db-util";
 
 async function handler(req, res) {
     if(req.method === 'POST') {
@@ -9,31 +9,25 @@ async function handler(req, res) {
             res.status(422).json({ message: 'Invalid email address' });
             return;
         }
-        
-
-        // const mongodbUrl = 'mongodb+srv://luke:5Z1I9q40ZBXEkhUX@cluster0.5gvy97r.mongodb.net/newsletter';
-        const mongodbUrl = process.env.MONGODB_URI;
 
         let client;
-
         try {
-            client = await MongoClient.connect(mongodbUrl);
+            client = await connectDatabase();
+            // client = await MongoClient.connect(mongodbUrl);
+        }catch(error) {
+            res.status(500).json({ message: 'Could not connect to database.' });
+        }
 
-            const db = client.db();
-
-            await db.collection('emails').insertOne({ email: userEmail });
-
+        try{
+            await insertDocument(client,'emails',{ email:userEmail })
             res.status(201).json({ message: 'Signed Up!' });
         } catch (error) {
-            res.status(500).json({ message: 'Could not connect to database.' });
+            res.status(500).json({ message: 'Failed to insert data' });
         } finally {
             if (client) {
                 client.close();
             }
         }
-
-        console.log(userEmail);
-        res.status(201).json({ message: 'Signed Up!' });
 
     }else{
         //GET
